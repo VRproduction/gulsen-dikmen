@@ -1,0 +1,13 @@
+<section class="news-section p_relative">
+    <div class="auto-container">
+        <div class="sec-title centred mb_50">
+            <span class="sub-title">Məqalələr</span>
+            <h2>{{home.blog_section_title|safe}}</h2>
+        </div>
+        <div class="row clearfix">
+            {% for blog in blogs %}
+                {% include "components/blog/blog-item.html" with blog=blog %}
+            {% endfor %}
+        </div>
+    </div>
+</section>

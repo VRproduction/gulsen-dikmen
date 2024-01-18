@@ -1,0 +1,35 @@
+<section class="testimonial-style-two pt_100">
+    <div class="bg-layer" style="background-image: url(assets/images/background/testimonial-bg.jpg);"></div>
+    <div class="pattern-layer">
+        <div class="pattern-1" style="background-image: url(assets/images/shape/shape-22.png);"></div>
+        <div class="pattern-2" style="background-image: url(assets/images/shape/shape-23.png);"></div>
+    </div>
+    <div class="auto-container">
+        <div class="row clearfix">
+            <div class="col-xl-6 col-lg-12 col-md-12 content-column">
+                <div class="content_block_six">
+                    <div class="content-box p_relative z_2">
+                        <div class="sec-title p_relative mb_35">
+                            <span class="sub-title">Rəylər</span>
+                            <h2>{{home.customer_comment_title}}</h2>
+                        </div>
+                        <div class="single-item-carousel owl-carousel owl-theme owl-nav-none dots-style-one">
+                                {% for comment in customer_comments %}
+                                <div class="testimonial-content">
+                                    <div class="text p_relative d_block">
+                                        <p>“{{comment.text}}”.</p>
+                                    </div>
+                                    <div class="author-box">
+                                        <figure class="author-thumb"><img src="{{comment.image.url}}" alt=""></figure>
+                                        <h3>{{comment.full_name}}</h3>
+                                            <br>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,21 @@
+<div class="col-lg-4 col-md-6 col-sm-12 news-block">
+    <div class="news-block-one wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">
+        <div class="inner-box">
+            <figure class="image-box">
+                <img src="{{blog.image.url}}" alt="">
+                <a href="blog-details.html"><i class="fas fa-link"></i></a>
+            </figure>
+            <div class="lower-content">
+                <div class="inner">
+                    <div class="category"><a href="blog-details.html">{{blog.category}}</a></div>
+                    <h3><a href="blog-details.html">{{blog.title}}</a></h3>
+                    <ul class="post-info clearfix">
+                        <li><i class="icon-34"></i>{{blog.created|date:"d M, Y"}}</li>
+                    </ul>
+                    <p>{{blog.description|safe|truncatechars:"50"}}</p>
+                    <div class="link"><a href="blog-details.html">Daha çox</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

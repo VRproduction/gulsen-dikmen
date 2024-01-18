@@ -1,0 +1,49 @@
+{% load static %}
+<section class="faq-section p_relative">
+    <div class="pattern-layer">
+        <div class="pattern-1" style="background-image: url(assets/images/shape/shape-44.png);"></div>
+        <div class="pattern-2" style="background-image: url(assets/images/shape/shape-45.png);"></div>
+    </div>
+    <div class="auto-container">
+        <div class="row clearfix">
+            <div class="col-lg-6 col-md-12 col-sm-12 content-column">
+                <div class="content_block_nine">
+                    <div class="content-box mr_30 p_relative">
+                        <div class="sec-title-two mb_50">
+                            <h2 class="d_block fs_40 fw_bold">Tez-tez soruşulan<br />suallar</h2>
+                        </div>
+                        <div class="accordion-inner">
+                            <ul class="accordion-box">
+                                {% for faq in faqs %}
+                                <li class="accordion block {% if forloop.counter == 1 %}active-block{% endif %}">
+                                    <div class="acc-btn active">
+                                        <div class="icon-outer"><i class="far fa-angle-down"></i></div>
+                                        <h5>{{faq.title}}</h5>
+                                    </div>
+                                    <div class="acc-content {% if forloop.counter == 1 %}current{% endif %}">
+                                        <div class="text">
+                                            <p>{{faq.description}}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 image-column">
+                <div class="image_block_five">
+                    <div class="image-box ml_45 p_relative">
+                        <div class="shape">
+                            <div class="shape-1" style="background-image: url({% static "assets/images/shape/shape-42.png" %});"></div>
+                            <div class="shape-2" style="background-image: url({% static "assets/images/shape/shape-43.png);" %}"></div>
+                        </div>
+                        <figure class="image image-1"><img src="{{home.faq_big_image.url}}" alt=""></figure>
+                        <figure class="image image-2"><img src="{{home.faq_small_image.url}}" alt=""></figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

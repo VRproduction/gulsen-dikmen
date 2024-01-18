@@ -1,0 +1,56 @@
+{% load static %}
+<section class="about-section">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <div class="col-lg-6 col-md-12 col-sm-12 image-column">
+                <div class="image_block_one">
+                    <div class="image-box mr_30 pr_130 pb_100">
+                        <div class="shape" style="background-image: url({% static "assets/images/shape/shape-1.png" %});"></div>
+                        <figure class="image"><img src="{{about.image.url}}" alt=""></figure>
+                        <div class="text p_absolute r_0 b_0">
+                            <h2>{{about.experience}}</h2>
+                            <h4>İldən Artıq Təcrübə</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 content-column">
+                <div class="content_block_one">
+                    <div class="content-box ml_30">
+                        <div class="sec-title left p_relative d_block mb_25">
+                            <span class="sub-title">Biz kimik?</span>
+                            <h2>{{about.title}}</h2>
+                        </div>
+                        <div class="text p_relative d_block">
+                            <p>{{about.description}}</p>
+                        </div>
+                        <div class="inner-box">
+                            <div class="row clearfix">
+                                <div class="col-lg-6 col-md-6 col-sm-12 single-column">
+                                    <div class="single-item">
+                                        <h3>Missiyamız</h3>
+                                        <ul class="list-style-one clearfix">
+                                            {% for mission in about.missions.all %}
+                                            <li>{{mission.title}}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 single-column">
+                                    <div class="single-item">
+                                        <h3>Vizyonumuz</h3>
+                                        <ul class="list-style-one clearfix">
+                                            {% for vision in about.visions.all %}
+                                            <li>{{vision.title}}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

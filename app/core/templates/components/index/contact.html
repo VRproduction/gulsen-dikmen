@@ -1,0 +1,47 @@
+{% load static %}
+<section class="contact-section p_relative">
+    <div class="bg-layer"></div>
+    <div class="pattern-layer">
+        <div class="pattern-1" style="background-image: url({% static "assets/images/shape/shape-7.png" %});"></div>
+        <div class="pattern-2" style="background-image: url({% static "assets/images/shape/shape-8.png" %});"></div>
+    </div>
+    <div class="auto-container">
+        <div class="sec-title centred light mb_45">
+            <span class="sub-title">Konsultasiya</span>
+            <h2>{{contact.section_title|safe}}</h2>
+        </div>
+        <div class="support-box p_relative centred">
+            <div class="icon-box"><img src="{% static "assets/images/icons/icon-2.png" %}" alt=""></div>
+            <h3><a href="tel:{{setting.phone_number}}">{{setting.phone_number}}</a></h3>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-4 col-md-12 col-sm-12 form-column">
+                <div class="form-inner">
+                    <h3>Məsləhətə ehtiyacın var? <span>Görüşə yazıl</span></h3>
+                    <form action="https://azim.commonsupport.com/Optcare/contact.html" method="post" class="default-form">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Ad Soyad" required="">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Email" required="">
+                        </div>
+                        <div class="form-group">
+                            <div class="icon"><i class="far fa-angle-down"></i></div>
+                            <input type="text" name="date" placeholder="Görüş günü" id="datepicker">
+                        </div>
+                        <div class="form-group message-btn">
+                            <button type="submit" class="theme-btn btn-two">Görüşə yazıl</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-12 col-sm-12 video-column">
+                <div class="video-inner" style="background-image: url({{contact.video_bg_image.url}});">
+                    <div class="video-btn">
+                        <a href="{{contact.youtube_link}}" class="lightbox-image" data-caption=""><i class="fas fa-play"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
