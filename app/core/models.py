@@ -1,5 +1,7 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.utils.text import slugify
+from django.urls import reverse
 
 class GeneralSettings(models.Model):
     site_title = models.CharField(
@@ -126,9 +128,11 @@ class OurVision(models.Model):
 
 class Service(models.Model):
     title = models.CharField(max_length = 100)
+    slug = models.SlugField(blank=True, null=True, unique = True)
     icon = models.ImageField(upload_to = 'service_icon', null = True)
     image = models.ImageField(upload_to = 'service')
     description = RichTextUploadingField(null = True)
+    is_home_page = models.BooleanField(default = False)
 
     def __str__(self):
         return self.title
@@ -136,6 +140,14 @@ class Service(models.Model):
     class Meta:
         verbose_name = "Xidmət"
         verbose_name_plural = "Xidmətlər"
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Service, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("service-detail", args=[str(self.slug)])
+
 
 class ServicePunkt(models.Model):
     title = models.CharField(max_length = 500)
@@ -211,20 +223,9 @@ class HomePageContactSection(models.Model):
         verbose_name_plural = "Ana səhifə | Əlaqə hissəsi"
 
 
-class BlogCategory(models.Model):
-    title = models.CharField(max_length = 100)
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name = "Kateqoriya"
-        verbose_name_plural = "Kateqoriyalar | Blog"
-
 class Blog(models.Model):
     title = models.CharField(max_length = 200)
     description = RichTextUploadingField()
-    category = models.ForeignKey(BlogCategory, on_delete = models.SET_NULL, null = True, blank = True)
     image = models.ImageField(upload_to = 'blogs')
     created = models.DateField(auto_now_add = True)
     is_home_page = models.BooleanField(default = False)
@@ -235,3 +236,45 @@ class Blog(models.Model):
     class Meta:
         verbose_name = "Bloq"
         verbose_name_plural = "Bloqlar"
+
+    def get_absolute_url(self):
+        return reverse("blog-detail", args=[str(self.pk)])
+    
+class Gallery(models.Model):
+    title = models.CharField(max_length = 500)
+    image = models.ImageField(upload_to = 'gallery')
+    youtube_link = models.TextField(null = True, blank = True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Qaleriya"
+        verbose_name_plural = "Qaleriya"
+
+class Contact(models.Model):
+    name = models.CharField(max_length = 200)
+    email = models.EmailField()
+    number = models.CharField(max_length = 50)
+    subject = models.CharField(max_length = 200)
+    text = models.TextField()
+    created = models.DateTimeField(auto_now_add = True, null = True)
+
+    def __str__(self):
+        return ('%s') % (self.name)
+
+    class Meta:
+        verbose_name = "Mesaj"
+        verbose_name_plural = "Mesajlar"
+    
+class Appointment(models.Model):
+    name = models.CharField(max_length = 200)
+    email = models.EmailField()
+    date = models.DateField()
+
+    def __str__(self):
+        return ('%s') % (self.name)
+
+    class Meta:
+        verbose_name = "Görüş"
+        verbose_name_plural = "Görüşlər"

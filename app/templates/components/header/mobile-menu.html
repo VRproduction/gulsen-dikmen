@@ -3,23 +3,26 @@
     <div class="close-btn"><i class="fas fa-times"></i></div>
     
     <nav class="menu-box">
-        <div class="nav-logo"><a href="index-2.html"><img src="assets/images/logo-2.png" alt="" title=""></a></div>
+        <div class="nav-logo"><a href="{% url "home" %}"><img src="{{setting.mobile_logo.url}}" alt="" title=""></a></div>
         <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
         <div class="contact-info">
-            <h4>Contact Info</h4>
+            <h4>Əlaqə</h4>
             <ul>
-                <li>Chicago 12, Melborne City, USA</li>
-                <li><a href="tel:+8801682648101">+88 01682648101</a></li>
-                <li><a href="mailto:info@example.com">info@example.com</a></li>
+                <li><a href="{{setting.g_adress}}">{{setting.adress}}</a></li>
+                <li><a href="tel:{{setting.phone_number}}">{{setting.phone_number}}</a></li>
+                <li><a href="mailto:{{setting.email}}">{{setting.email}}</a></li>
             </ul>
         </div>
         <div class="social-links">
             <ul class="clearfix">
-                <li><a href="index-2.html"><span class="fab fa-twitter"></span></a></li>
-                <li><a href="index-2.html"><span class="fab fa-facebook-square"></span></a></li>
-                <li><a href="index-2.html"><span class="fab fa-pinterest-p"></span></a></li>
-                <li><a href="index-2.html"><span class="fab fa-instagram"></span></a></li>
-                <li><a href="index-2.html"><span class="fab fa-youtube"></span></a></li>
+                <li><a href="{% if setting.facebook %}{{setting.facebook}}{% else %}#{% endif %}"><span class="fab fa-facebook-square"></span></a></li>
+                <li><a href="{% if setting.instagram %}{{setting.instagram}}{% else %}#{% endif %}"><span class="fab fa-instagram"></span></a></li>
+                <li><a href="{% if setting.youtube %}{{setting.youtube}}{% else %}#{% endif %}"><span class="fab fa-youtube"></span></a></li>
+                <li><a href="{% if setting.tiktok %}{{setting.tiktok}}{% else %}#{% endif %}">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom:4px;" width="13" height="13" fill="currentColor" class="bi bi-tiktok" viewBox="0 0 16 16">
+                        <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/>
+                      </svg></a>
+                </li>
             </ul>
         </div>
     </nav>

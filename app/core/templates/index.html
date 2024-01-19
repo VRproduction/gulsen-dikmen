@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-
+<div style="position: fixed; top: 50px; right: 20px; z-index: 100;" class="alert alert-success d-none" role="alert" id="success-message">
+    Görüş uğurla qeydə alındı!
+  </div>
 <!-- banner-section -->
 {% include "components/index/banner.html" %}
 <!-- banner-section end -->
@@ -45,3 +47,68 @@
 {% include "components/index/map.html" %}
 <!-- google-map-section end -->
 {% endblock content %}
+
+{% block js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const contactForm = document.getElementById('consultancy-form');
+        const contactForm2 = document.getElementById('contact-form');
+        const successMessageDiv = document.getElementById('success-msj');
+        const successMessage = document.getElementById('success-message');
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+    
+            const formData = new FormData(contactForm);
+    
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())  // Eğer JSON yanıt almak istiyorsanız
+            .then(data => {
+                if (data.status == "success") {
+                    contactForm.reset();
+                    successMessageDiv.textContent = 'Görüş uğurla qeydə alındı!';
+                    successMessageDiv.classList.add('success-message');
+    
+                   
+                }else{
+                    successMessageDiv.textContent = '';
+                }
+            })
+            .catch(error => {
+                console.error('Hata:', error);
+            });
+        });
+
+        contactForm2.addEventListener('submit', function(event) {
+            event.preventDefault();
+    
+            const formData = new FormData(contactForm2);
+    
+            fetch(contactForm2.action, {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())  // Eğer JSON yanıt almak istiyorsanız
+            .then(data => {
+                if (data.status == "success") {
+                    contactForm2.reset();
+                    // successMessageDiv.textContent = 'Mesajınız uğurla göndərildi!';
+                    // successMessageDiv.classList.add('success-message');
+                    successMessage.classList.remove('d-none');
+                    setTimeout(function() {
+                        successMessage.classList.add('d-none');
+                    }, 5000); 
+                }else{
+                    // successMessageDiv.textContent = '';
+                }
+            })
+            .catch(error => {
+                console.error('Hata:', error);
+            });
+        });
+
+    });
+    </script>
+{% endblock js %}

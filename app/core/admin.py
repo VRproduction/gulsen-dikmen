@@ -84,7 +84,6 @@ class HomePageContactSectionAdmin(admin.ModelAdmin):
             return False
         return super().has_add_permission(request)
     
-admin.site.register(BlogCategory)
 admin.site.register(Blog)
 
 class WorkHourInline(admin.TabularInline):
@@ -98,3 +97,7 @@ class AdminGeneralSettings(admin.ModelAdmin):
         if self.model.objects.count() >= MAX_OBJECTS:
             return False
         return super().has_add_permission(request)
+
+admin.site.register(Gallery)
+admin.site.register(Contact)
+admin.site.register(Appointment)

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- Page Title -->
+{% include "components/page-title.html" with page="Xidmətlər" %}
+<!-- End Page Title -->
+
+<!-- service-style-two -->
+<section class="service-style-two p_relative">
+    <div class="auto-container">
+        <div class="row clearfix">
+            {% for service in services %}
+            {% include "components/service/service-item.html" with service=service %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- service-style-two end -->
+{% endblock content %}

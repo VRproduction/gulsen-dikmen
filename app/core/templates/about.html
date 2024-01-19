@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- Page Title -->
+{% include "components/page-title.html" with page="Haqqımızda" %}
+<!-- End Page Title -->
+
+
+<!-- about-section -->
+{% include "components/index/about.html" %}
+<!-- about-section end -->
+
+<!-- funfact-section -->
+{% include "components/index/funfact.html" %}
+<!-- funfact-section end -->
+
+<!-- process-section -->
+{% include "components/index/process.html" %}
+<!-- process-section end -->
+{% endblock content %}

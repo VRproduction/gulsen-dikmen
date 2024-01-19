@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Page Title -->
+<section class="page-title">
+    <div class="bg-layer" style="background-image: url({% static "assets/images/background/page-title.jpg" %});"></div>
+    <div class="auto-container">
+        <div class="content-box">
+            <h1>{{service.title}}
+            </h1>
+            <ul class="bread-crumb clearfix">
+                <li><a href="{% url "home" %}">Ana səhifə</a></li>
+                <li><a href="{% url "services" %}">Xidmətlər</a></li>
+                <li>{{service.title}}</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- End Page Title -->
+
+<!-- service-details -->
+<section class="service-details p_relative">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
+                <div class="service-sidebar mr_40">
+                    <div class="text">
+                        <h3>Xidmətlər</h3>
+                    </div>
+                    <ul class="category-list clearfix">
+                        {% for item in services %}
+                        <li><a href="{{item.get_absolute_url}}" class="{% if service.pk == item.pk %}current{% endif %}">{{item.title}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-12 col-sm-12 content-side">
+                <div class="service-details-content">
+                    <div class="content-one">
+                        <h2>{{service.title}}</h2>
+                        <figure class="image-box"><img src="{{service.image.url}}" alt=""></figure>
+                        <div class="text">
+                            <p>{{service.description|safe}}</p>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- service-details end -->
+
+{% endblock content %}

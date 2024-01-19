@@ -5,15 +5,25 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 footer-column">
                     <div class="about-widget footer-widget mr_40">
                         <div class="widget-title">
-                            <h3>About</h3>
+                            <h3>Haqqımızda</h3>
                         </div>
                         <div class="widget-content">
-                            <p>Lorem ipsum dolor amet consecto adi pisicing elit sed eiusm tempor incididunt labore dolore magna aliqua enim ad minim.</p>
+                            <p>{{setting.footer_description}}</p>
                             <ul class="social-links clearfix">
-                                <li><a href="index-2.html"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="index-2.html"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="index-2.html"><i class="fab fa-vimeo-v"></i></a></li>
-                                <li><a href="index-2.html"><i class="fab fa-google-plus-g"></i></a></li>
+                                <li>
+                                    <a href="{% if setting.facebook %}{{setting.facebook}}{% else %}#{% endif %}"><i class="fab fa-facebook-f" aria-hidden="true"></i></a> 
+                                </li>
+                                <li>
+                                    <a href="{% if setting.instagram %}{{setting.instagram}}{% else %}#{% endif %}"><i class="fab fa-instagram" aria-hidden="true"></i></a> 
+                                </li>
+                                <li>
+                                    <a href="{% if setting.tiktok %}{{setting.tiktok}}{% else %}#{% endif %}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom:4px;" width="14" height="14" fill="currentColor" class="bi bi-tiktok" viewBox="0 0 16 16">
+                                            <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/>
+                                          </svg>                           </a>
+                                </li> <li>
+                                    <a href="{% if setting.youtube %}{{setting.youtube}}{% else %}#{% endif %}"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -21,16 +31,16 @@
                 <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
                     <div class="links-widget footer-widget ml_100">
                         <div class="widget-title">
-                            <h3>Links</h3>
+                            <h3>Keçidlər</h3>
                         </div>
                         <div class="widget-content">
                             <ul class="links-list clearfix">
-                                <li><a href="index-2.html">About</a></li>
-                                <li><a href="index-2.html">Services</a></li>
-                                <li><a href="index-2.html">Job</a></li>
-                                <li><a href="index-2.html">opportunities</a></li>
-                                <li><a href="index-2.html">Location</a></li>
-                                <li><a href="index-2.html">Article</a></li>
+                                <li><a href="{% url "about" %}">Haqqımızda</a></li>
+                                <li><a href="{% url "services" %}">Xidmətlər</a></li>
+                                <li><a href="{% url "blogs" %}">Bloq</a></li>
+                                <li><a href="{% url "gallery" %}">Qaleriya</a></li>
+                                <li><a href="{% url "contact" %}">Əlaqə</a></li>
+                                
                             </ul>
                         </div>
                     </div>
@@ -38,16 +48,13 @@
                 <div class="col-lg-2 col-md-6 col-sm-12 footer-column">
                     <div class="links-widget footer-widget ml_30">
                         <div class="widget-title">
-                            <h3>Services</h3>
+                            <h3>Xidmətlər</h3>
                         </div>
                         <div class="widget-content">
                             <ul class="links-list clearfix">
-                                <li><a href="index-2.html">About</a></li>
-                                <li><a href="index-2.html">Services</a></li>
-                                <li><a href="index-2.html">Job</a></li>
-                                <li><a href="index-2.html">opportunities</a></li>
-                                <li><a href="index-2.html">Location</a></li>
-                                <li><a href="index-2.html">Article</a></li>
+                                {% for item in f_services %}
+                                <li><a href="{{item.get_absolute_url}}">{{item.title}}</a></li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
@@ -55,13 +62,13 @@
                 <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
                     <div class="contact-widget footer-widget ml_50">
                         <div class="widget-title">
-                            <h3>Contacts</h3>
+                            <h3>Əlaqə</h3>
                         </div>
                         <div class="widget-content">
                             <ul class="info clearfix">
-                                <li>Flat 20, Reynolds Neck, North Helenaville, FV77 8WS</li>
-                                <li><a href="tel:23055873407">+2(305) 587-3407</a></li>
-                                <li><a href="mailto:sample@example.com">sample@example.com</a></li>
+                                <li><a href="mailto:{{setting.email}}">{{setting.email}}</a></li>
+                                <li><a href="{{setting.g_adress}}">{{setting.adress}}</a></li>
+                                <li><a href="tel:{{setting.phone_number}}">{{setting.phone_number}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -71,7 +78,9 @@
     </div>
     <div class="footer-bottom centred">
         <div class="auto-container">
-            <div class="copyright"><p><a href="index-2.html">Optcare</a> &copy; 2022 All Right Reserved</p></div>
+            <div class="copyright">
+                <p>&copy; Copyright {{current_year}} by <a href="{{setting.copyright_link}}">{{setting.copyright_title}}</a></p>
+            </div>
         </div>
     </div>
 </footer>

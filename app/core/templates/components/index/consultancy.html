@@ -1,8 +1,10 @@
   <section class="consultancy-section">
     <div class="auto-container">
         <div class="inner-container">
-            <h2>Quick Online Consultancy Only <br />on Few Minutes</h2>
-            <form action="https://azim.commonsupport.com/Optcare/contact.html" method="post">
+            <h2>{{home.consultancy_section_title}}</h2>
+            <p id="success-msj"></p>
+            <form method="post" id="consultancy-form">
+                {% csrf_token %}
                 <div class="row clearfix">
                     <div class="col-lg-4 col-md-6 col-sm-12 column">
                         <div class="form-group">

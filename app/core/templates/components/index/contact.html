@@ -18,7 +18,8 @@
             <div class="col-lg-4 col-md-12 col-sm-12 form-column">
                 <div class="form-inner">
                     <h3>Məsləhətə ehtiyacın var? <span>Görüşə yazıl</span></h3>
-                    <form action="https://azim.commonsupport.com/Optcare/contact.html" method="post" class="default-form">
+                    <form id="contact-form" method="post" class="default-form">
+                        {% csrf_token %}
                         <div class="form-group">
                             <input type="text" name="name" placeholder="Ad Soyad" required="">
                         </div>
