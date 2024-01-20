@@ -11,8 +11,8 @@
             <div class="auto-container">
                 <div class="banner-content p_relative d_block">
                     <div class="content-box p_relative d_block z_5">
-                        <h3>{{slider.title}}</h3>
-                        <h2 class="p_relative d_block fs_70 lh_80 fw_bold">{{slider.title}}</h2>
+                        <h3>{{slider.title|safe}}</h3>
+                        <h2 class="p_relative d_block fs_70 lh_80 fw_bold">{{slider.description|safe}}</h2>
                         <br/><br/>
                         <div class="btn-box">
                             <a href="{% url "contact" %}" class="theme-btn btn-one">Görüşə yazıl</a>
