@@ -680,7 +680,9 @@ img {
   background: #fff;
   box-shadow: 0px 20px 30px 0px rgba(0, 0, 0, 0.05);
 }
-
+.main-header .outer-box .logo img{
+  height: 75px !important;
+}
 .main-header .outer-box{
   position: relative;
   display: flex;
@@ -1740,6 +1742,7 @@ div#mCSB_1_container{
 }
 
 .banner-carousel .owl-nav{
+  display: none;
   position: absolute;
   left: 0px;
   top: 45%;
@@ -3364,7 +3367,7 @@ div#mCSB_1_container{
   height: 100%;
   top: 0px;
   right: 0px;
-  background: #03c0b4;
+  background: #ff247e;
   mix-blend-mode: multiply;
   z-index: 1;
 }
@@ -4154,7 +4157,7 @@ div#mCSB_1_container{
   height: 100%;
   top: 0px;
   right: 0px;
-  background: #03c0b4;
+  background: #ff247e;
   mix-blend-mode: multiply;
 }
 

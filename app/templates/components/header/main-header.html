@@ -53,7 +53,7 @@
                                 <li {% if request.path == '/about/' %}class="current"{% endif %}><a href="{% url "about" %}">Haqqımızda</a></li>
                                 <li {% if request.path|slice:":10" == '/services/' %}class="current"{% endif %}><a href="{% url "services" %}">Xidmətlər</a></li>
                                 <li {% if request.path|slice:":7" == '/blogs/' %}class="current"{% endif %}><a href="{% url "blogs" %}">Bloq</a></li>
-                                <li {% if request.path == '/gallery/' %}class="current"{% endif %}><a href="{% url "gallery" %}">Qaleriya</a></li>
+                                <li {% if request.path == '/gallery/' %}class="current"{% endif %}><a href="{% url "gallery" %}">Qalereya</a></li>
                                 <li {% if request.path == '/contact/' %}class="current"{% endif %}><a href="{% url "contact" %}">Əlaqə</a></li>
                             </ul>
                         </div>
