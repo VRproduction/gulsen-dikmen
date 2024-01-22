@@ -226,6 +226,7 @@ class HomePageContactSection(models.Model):
 class Blog(models.Model):
     title = models.CharField(max_length = 200)
     description = RichTextUploadingField()
+    description_2 = models.TextField(blank = True, null = True)
     image = models.ImageField(upload_to = 'blogs')
     created = models.DateField(auto_now_add = True)
     is_home_page = models.BooleanField(default = False)
