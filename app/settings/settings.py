@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
-    "core.middlewares.ServerExpirationMiddleware",  
+    # "core.middlewares.ServerExpirationMiddleware",  
 
 ]
 
